@@ -4,18 +4,18 @@
 #include<cstring>
 using namespace std;
 
-void replaceAllPie(char *arr[][1000],int length){
-//    int length = strlen(arr);
+void replaceAllPie(char *arr,int length){
+
     for(int j=0;j<length-1;j++){
-        if(arr[0][j]=='p'&&arr[0][j+1]=='i'){
+        if(arr[j]=='p'&&arr[j+1]=='i'){
             cout<<"3.14";
             j++;
         }
         else{
-            cout<<arr[0][j];
+            cout<<arr[j];
         }
     }
-    
+
     cout<<endl;
 }
 
@@ -23,13 +23,24 @@ int main(){
     int n;
     cin>>n;
     char arr[n][1000];
+    int length[n];
     for(int i=0;i<n;i++){
         cin>>arr[i][1000];
-    }
-    for(int j=0;j<n;j++){
-        replaceAllPie(arr[j][1000],sizeof(arr[j]));
+        int count=0;
+        int j=0;
+        while(arr[i][j]!='\0'){
+            count++;j++;
+        }
+        length[i] = count;
     }
     
+    for(int k=0;k<n;k++){
+        cout<<length[k]<<"     ";
+    }
+    
+    for(int j=0;j<n;j++){
+        replaceAllPie(arr[j],length[j]);
+    }
     
     return 0;
 }
