@@ -3,40 +3,43 @@
 #include<iostream>
 
 using namespace std;
-
-bool partyTime(int *arr,int n,int budget){
-    sort(arr,arr+n);
-    
-    for(int i=0;i<n;i++){
+int flag=0;
+int partyTime(int *arr,int n,int i,int sum,int budget){
+    if(flag==0){
+        //base case
+        if(i>=n)
+            return 0;
+        if(sum==budget){
+            flag=1;
+            return 0;
+        }
         
-    
-    
+        return partyTime(arr,n,i+1,sum+arr[i],budget) + partyTime(arr,n,i+1,sum,budget);
+        
     }
-    return 0;
+    else
+        return 0;
 }
 
 
 int main(){
     int n;
     cin>>n;
-    bool ans[n];
     
     for(int i=0;i<n;i++){
+        flag=0;
         int size,budget;
         cin>>size>>budget;
         int arr[size];
         for(int j=0;j<size;j++){
             cin>>arr[j];
         }
-        ans[i] = partyTime(arr,size,budget);
-    }
-    for(int k=0;k<n;k++){
-        if(ans[k]){
-            cout<<"YES"<<endl;
-        }
-        else{
-            cout<<"NO"<<endl;
-        }
+        int temp = partyTime(arr,size,0,0,budget);
+        if(flag==0)
+            cout<<"No"<<endl;
+        else
+            cout<<"Yes"<<endl;
+        
     }
     
     return 0;

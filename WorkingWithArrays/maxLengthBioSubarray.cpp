@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void findMaxLengthSubarray(int *arr,int n,int flag){
+int findMaxLengthSubarray(int *arr,int n,int flag){
     
     int count=0;
     int temp=1;

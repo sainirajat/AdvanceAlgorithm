@@ -24,6 +24,7 @@ int main(){
     cin>>n;
     char arr[n][1000];
     int length[n];
+    
     for(int i=0;i<n;i++){
         cin>>arr[i][1000];
         int count=0;
