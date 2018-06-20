@@ -4,7 +4,7 @@
 
 using namespace std;
 int flag=0;
-int partyTime(int *arr,int n,int i,int sum,int budget){
+void partyTime(int *arr,int n,int i,int sum,int budget){
     if(flag==0){
         //base case
         if(i>=n)

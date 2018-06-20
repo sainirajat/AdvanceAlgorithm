@@ -4,44 +4,50 @@
 #include<cstring>
 using namespace std;
 
-void replaceAllPie(char *arr,int length){
-
-    for(int j=0;j<length-1;j++){
-        if(arr[j]=='p'&&arr[j+1]=='i'){
-            cout<<"3.14";
-            j++;
+void replaceAllPie(char *in,char *out,int i,int j){
+    
+    if(in[i]=='\0'){
+        out[j] = '\0';
+        cout<<out<<endl;
+        return;
+    }
+    
+    if(in[i]=='p'&&in[i+1]!='\0'){
+        if(in[i+1]=='i'){
+            out[j] = '3';
+            out[j+1] = '.';
+            out[j+2] = '1';
+            out[j+3] = '4';
+            replaceAllPie(in,out,i+2,j+4);
         }
         else{
-            cout<<arr[j];
+            out[j] = in[i];
+            replaceAllPie(in,out,i+1,j+1);
         }
     }
+    else{
+        out[j] = in[i];
+        replaceAllPie(in,out,i+1,j+1);
+    }
+    
+    return;
 
-    cout<<endl;
 }
+
+//3
+//xpix
+//xabpixx3.15x 
+//xpipippixx
+
 
 int main(){
     int n;
     cin>>n;
     char arr[n][1000];
-    int length[n];
-    
+    char out[n][4000];
     for(int i=0;i<n;i++){
-        cin>>arr[i][1000];
-        int count=0;
-        int j=0;
-        while(arr[i][j]!='\0'){
-            count++;j++;
-        }
-        length[i] = count;
+        cin>>arr[i];
+        replaceAllPie(arr[i],out[i],0,0);
     }
-    
-    for(int k=0;k<n;k++){
-        cout<<length[k]<<"     ";
-    }
-    
-    for(int j=0;j<n;j++){
-        replaceAllPie(arr[j],length[j]);
-    }
-    
     return 0;
 }
