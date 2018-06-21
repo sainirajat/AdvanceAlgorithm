@@ -3,9 +3,9 @@
 #include<iostream>
 
 using namespace std;
-#define ll long long
+#define ull unsigned long long
 
-ll findGCD(ll a,ll b){
+ull findGCD(ull a,ull b){
     if(b==0)
         return a;
     return findGCD(b,a%b);
@@ -14,7 +14,7 @@ ll findGCD(ll a,ll b){
 }
 
 int main(){
-    ll a,b;
+    ull a,b;
     cin>>a>>b;
     
     cout<<findGCD(a,b)<<endl;

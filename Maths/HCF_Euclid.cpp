@@ -19,9 +19,9 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    ll ans = 1000000;
-    for(int i=0;i<n-1;i++){
-        ans = min(ans,findgcd(arr[i],arr[i+1]));
+    ll ans = arr[0];
+    for(int i=1;i<n;i++){
+        ans = findgcd(ans,arr[i]);
     }
     cout<<ans<<endl;
 }
