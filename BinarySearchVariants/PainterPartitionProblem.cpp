@@ -4,23 +4,41 @@
 using namespace std;
 
 bool canPaint(int *arr,int painters,int boards,int time){
-    bool ans=false;
+    int freePainter = painters-1;
+    int t = arr[0];
     
     
+    for(int b=1;b<boards+painters;b++){
+        for(int i=0;i<painters;i++){
+            if(arr[b]>0){
+                arr[i]--;
+            }
+        }
+        t += arr[b];
+        cout<<t<<" ";
+        if(t>time){
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 
-void paintTheBoards(int *arr,int painters,int boards){
+int paintTheBoards(int *arr,int painters,int boards){
     int s=0,e=INT_MAX;
     int ans=INT_MAX;
-    while(s<e){
-        mid = (s+e)/2;
+    
+    
+    
+    while(s<=e){
+        int mid = (s+e)/2;
         if(canPaint(arr,painters,boards,mid)){
             ans=mid;
-            s=mid;
+            e=mid-1;
         }
         else{
-            e=mid;
+            s=mid+1;
         }
     }
     return ans;
@@ -33,11 +51,13 @@ int main(){
     int painters,boards;
     cin>>painters>>boards;
     int arr[boards];
+
+    for(int i=0;i<boards;i++)
+        cin>>arr[i];
     
-    for(int i=0;i<boards;i++){
-        cin>>arr[boards];
-    }
-    paintTheBoards(arr,painters,boards);
+    sort(arr,arr+boards);
+    
+    cout<<paintTheBoards(arr,painters,boards)<<endl;
     
     return 0;
 }
