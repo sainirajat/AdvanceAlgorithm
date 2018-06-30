@@ -6,6 +6,8 @@
 using namespace std;
 
 bool comp (pair<string,int> p1,pair<string,int> p2){
+    if(p1.second == p2.second)
+        return p1.first<p2.first;
     return (p1.second > p2.second);
 }
 
@@ -23,22 +25,11 @@ int main(){
         v.push_back(make_pair(s,sal));
     }
     sort(v.begin(),v.end(),comp);
-    
-    for(int i=0;i<n-1;i++){
-        if(v[i].second>=num){
-        if(v[i].first>v[i+1].first){
-            cout<< v[i+1].first<<" "<<v[i+1].second<<endl;
-            cout<< v[i].first<<" "<<v[i].second<<endl;
-            i++;
-        }
 
-        else
-            cout<< v[i].first<<" "<<v[i].second<<endl;
+    for(int i=0;i<n;i++){
+        if(v[i].second>=num){
+            cout<<v[i].first<<" "<<v[i].second<<endl;
         }
-        
     }
-    if(v[n-1].second>=num)
-        cout<< v[n-1].first<<" "<<v[n-1].second<<endl;
-    
     return 0;
 }

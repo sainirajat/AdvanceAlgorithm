@@ -45,7 +45,7 @@ int main(){
 //    cout<<x<<" --> "<<y;
     
     x--;
-    cout<<x*y<<endl;
+    cout<<x*(y-1)<<endl;
 
     return 0;
 }
